@@ -27,7 +27,7 @@ struct UserProfile {
     let ref: FIRDatabaseReference?
     var active: Bool = false
     
-    init(key: String, firstName: String, surname: String, sex: String, age: Int, description: String, userId: String, active: Bool) {
+    init(key: String, firstName: String, surname: String, sex: String, age: Int, description: String, active: Bool, userId: String) {
         self.key = key
         self.firstName = firstName
         self.surname = surname
@@ -39,14 +39,18 @@ struct UserProfile {
         self.ref = nil
     }
     
-//    init(snapshot: FIRDataSnapshot) {
-//        key = snapshot.key
-//        let snapshotValue = snapshot.value as! [String: AnyObject]
-//        name = snapshotValue["name"] as! String
-//        addedByUser = snapshotValue["addedByUser"] as! String
-//        completed = snapshotValue["completed"] as! Bool
-//        ref = snapshot.ref
-//    }
+    init(snapshot: FIRDataSnapshot) {
+        key = snapshot.key
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        firstName = snapshotValue["firstName"] as! String
+        surname = snapshotValue["surname"] as! String
+        sex = snapshotValue["sex"] as! String
+        age = snapshotValue["age"] as! Int
+        description = snapshotValue["description"] as! String
+        userId = snapshotValue["userid"] as! String
+        active = snapshotValue["active"] as! Bool
+        ref = snapshot.ref
+    }
     
     func toAnyObject() -> Any {
         return [

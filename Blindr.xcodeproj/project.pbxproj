@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0A71F91DEC17C200A2C878 /* CloseByCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0A71F81DEC17C200A2C878 /* CloseByCell.swift */; };
+		1D0A71FB1DEC203700A2C878 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0A71FA1DEC203700A2C878 /* Tools.swift */; };
+		1D31EC061E28A6080010D17B /* UserDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D31EC051E28A6080010D17B /* UserDetailsTableViewController.swift */; };
 		1D4838D71DE7F9DB000619AB /* Facebook Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4838D61DE7F9DB000619AB /* Facebook Operations.swift */; };
 		1D4885781DDEE8EB00FC49CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4885771DDEE8EB00FC49CA /* AppDelegate.swift */; };
 		1D48857D1DDEE8EB00FC49CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D48857B1DDEE8EB00FC49CA /* Main.storyboard */; };
@@ -19,10 +22,14 @@
 		1D4885961DE69EB300FC49CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4885951DE69EB300FC49CA /* LoginViewController.swift */; };
 		1D48859D1DE7DE1700FC49CA /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D48859C1DE7DE1700FC49CA /* Alert.swift */; };
 		1D48859F1DE7DFD900FC49CA /* FirebaseOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D48859E1DE7DFD900FC49CA /* FirebaseOperations.swift */; };
+		1D96765B1DEBF01100E85B60 /* UsersNearbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D96765A1DEBF01100E85B60 /* UsersNearbyTableViewController.swift */; };
 		892BB8662703214850C05504 /* Pods_Blindr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D607261C7C14F6E12A6FA8CF /* Pods_Blindr.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D0A71F81DEC17C200A2C878 /* CloseByCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseByCell.swift; sourceTree = "<group>"; };
+		1D0A71FA1DEC203700A2C878 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		1D31EC051E28A6080010D17B /* UserDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewController.swift; sourceTree = "<group>"; };
 		1D4838D61DE7F9DB000619AB /* Facebook Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Facebook Operations.swift"; sourceTree = "<group>"; };
 		1D4885741DDEE8EB00FC49CA /* Blindr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blindr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D4885771DDEE8EB00FC49CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +44,7 @@
 		1D4885951DE69EB300FC49CA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1D48859C1DE7DE1700FC49CA /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		1D48859E1DE7DFD900FC49CA /* FirebaseOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseOperations.swift; sourceTree = "<group>"; };
+		1D96765A1DEBF01100E85B60 /* UsersNearbyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersNearbyTableViewController.swift; sourceTree = "<group>"; };
 		622C19534EAD0B4437486B8A /* Pods-Blindr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blindr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blindr/Pods-Blindr.debug.xcconfig"; sourceTree = "<group>"; };
 		9C6C3A13D630F116F1C3EAEB /* Pods-Blindr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blindr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blindr/Pods-Blindr.release.xcconfig"; sourceTree = "<group>"; };
 		D607261C7C14F6E12A6FA8CF /* Pods_Blindr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blindr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D0A71F51DEC169300A2C878 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				1D48857B1DDEE8EB00FC49CA /* Main.storyboard */,
+				1D4885801DDEE8EB00FC49CA /* LaunchScreen.storyboard */,
+			);
+			name = Layouts;
+			sourceTree = "<group>";
+		};
 		1D48856B1DDEE8EB00FC49CA = {
 			isa = PBXGroup;
 			children = (
@@ -75,13 +92,12 @@
 		1D4885761DDEE8EB00FC49CA /* Blindr */ = {
 			isa = PBXGroup;
 			children = (
-				1D48859B1DE7DDFA00FC49CA /* Utilities */,
 				1D48858B1DE40A2A00FC49CA /* Models */,
 				1D48858E1DE41E9500FC49CA /* Controllers */,
+				1D0A71F51DEC169300A2C878 /* Layouts */,
+				1D48859B1DE7DDFA00FC49CA /* Utilities */,
 				1D4885771DDEE8EB00FC49CA /* AppDelegate.swift */,
-				1D48857B1DDEE8EB00FC49CA /* Main.storyboard */,
 				1D48857E1DDEE8EB00FC49CA /* Assets.xcassets */,
-				1D4885801DDEE8EB00FC49CA /* LaunchScreen.storyboard */,
 				1D4885831DDEE8EB00FC49CA /* Info.plist */,
 				1D4885891DDEE91900FC49CA /* GoogleService-Info.plist */,
 			);
@@ -111,6 +127,7 @@
 			children = (
 				1D4885951DE69EB300FC49CA /* LoginViewController.swift */,
 				1D4885911DE567E500FC49CA /* UserProfileViewController.swift */,
+				1D31EC051E28A6080010D17B /* UserDetailsTableViewController.swift */,
 			);
 			name = "User Info";
 			sourceTree = "<group>";
@@ -119,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				1D4885931DE56E1C00FC49CA /* CloseByCollectionViewController.swift */,
+				1D0A71F81DEC17C200A2C878 /* CloseByCell.swift */,
+				1D96765A1DEBF01100E85B60 /* UsersNearbyTableViewController.swift */,
 			);
 			name = "Dating Controllers";
 			sourceTree = "<group>";
@@ -127,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				1D48859C1DE7DE1700FC49CA /* Alert.swift */,
+				1D0A71FA1DEC203700A2C878 /* Tools.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -285,11 +305,15 @@
 				1D48859D1DE7DE1700FC49CA /* Alert.swift in Sources */,
 				1D4885961DE69EB300FC49CA /* LoginViewController.swift in Sources */,
 				1D4838D71DE7F9DB000619AB /* Facebook Operations.swift in Sources */,
+				1D0A71F91DEC17C200A2C878 /* CloseByCell.swift in Sources */,
 				1D48859F1DE7DFD900FC49CA /* FirebaseOperations.swift in Sources */,
+				1D96765B1DEBF01100E85B60 /* UsersNearbyTableViewController.swift in Sources */,
 				1D4885921DE567E500FC49CA /* UserProfileViewController.swift in Sources */,
+				1D0A71FB1DEC203700A2C878 /* Tools.swift in Sources */,
 				1D4885781DDEE8EB00FC49CA /* AppDelegate.swift in Sources */,
 				1D48858D1DE40A5600FC49CA /* UserProfile.swift in Sources */,
 				1D4885941DE56E1C00FC49CA /* CloseByCollectionViewController.swift in Sources */,
+				1D31EC061E28A6080010D17B /* UserDetailsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +439,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5ZYKCXQGR3;
 				INFOPLIST_FILE = Blindr/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Carson.Blindr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -429,6 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5ZYKCXQGR3;
 				INFOPLIST_FILE = Blindr/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Carson.Blindr;
 				PRODUCT_NAME = "$(TARGET_NAME)";

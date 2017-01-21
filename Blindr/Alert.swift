@@ -11,7 +11,7 @@ import UIKit
 
 class Alert {
     
-    private let presentingViewController: UIViewController
+    let presentingViewController: UIViewController
     
     init(presentingViewController: UIViewController) {
         self.presentingViewController = presentingViewController
@@ -19,9 +19,7 @@ class Alert {
     
     // PRESENT ALERT METHOD
     
-    static func message(title: String, message: String) {
-        
-        //        let rootViewController: UIViewController = UIApplication.shared.windows[0].rootViewController!
+    func message(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: {(action: UIAlertAction!) in
@@ -29,6 +27,7 @@ class Alert {
             print("Taking user back to view before alert")
             
         }))
+        
         presentingViewController.present(alert, animated: true, completion: nil)
         
     }

@@ -26,7 +26,7 @@ class UserProfileViewController: UIViewController {
     //MARK: Properties
     
     var delegate: UserProfileViewControllerDelegate?
-    let ref = FIRDatabase.database().reference(withPath: "User-Profile")
+    //let ref = FIRDatabase.database().reference(withPath: "User-Profile")
     var age = 0
     var userLoginInfo: [String : String] = [:]
     
@@ -66,12 +66,22 @@ class UserProfileViewController: UIViewController {
         }
         
         
-        let userProfile = UserProfile(key: "abc", firstName: firstName, surname: surname, sex: sex, age: age, description: description, userId: userId, active: true)
+        let userProfile = UserProfile(key: "abc", firstName: firstName, surname: surname, sex: sex, age: age, description: description, active: true, userId: userId)
         
-        let userName = "\(firstName) \(surname)"
-        let userProfileRef = self.ref.child(userName.lowercased())
+        let firebaseService = FirebaseService()
+        firebaseService.createFIRUser(userProfile: userProfile)
         
-        userProfileRef.setValue(userProfile.toAnyObject())
+//        let userName = "\(userProfile.firstName) \(userProfile.surname)"
+//
+//        let userName = "\(firstName) \(surname)"
+//        let userProfileRef = self.ref.child(userName.lowercased())
+//        
+//        userProfileRef.setValue(userProfile.toAnyObject())
+        
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "active")
+        print(defaults.object(forKey: "userLoginInfo")!)
+        print(defaults.object(forKey: "active")!)
         
         self.delegate?.didEnterUserDetails()
 

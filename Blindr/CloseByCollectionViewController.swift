@@ -9,21 +9,25 @@
 import UIKit
 import Firebase
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "UserCell"
 
 class CloseByCollectionViewController: UICollectionViewController, LoginViewControllerDelegate, UserProfileViewControllerDelegate {
     
     //MARK: Properties
-    
+    var usersToDisplay: [UserProfile] = []
+    var faceImages: [UIImage] = []
+    fileprivate let reuseIdentifier = "UserCell"
+    fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
+    fileprivate let itemsPerRow: CGFloat = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier) as! CloseByCell
+        
+        // Get placeholder face images
+        faceImages = FaceImages.setUpFaceImages()
         
         // App StartUp processes
         handleInitialActivities()
@@ -34,53 +38,41 @@ class CloseByCollectionViewController: UICollectionViewController, LoginViewCont
         
         // Check if user has already logged in
         
-        let defaults = UserDefaults.standard
-        userLoginInfo = defaults.object(forKey: "userLoginInfo") as? [String: String] ?? [String: String]()
-        
-        print(userLoginInfo)
-
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
-            if user != nil {
+            if user == nil {
                 self.showLoginView()
             
+            } else {
+                // Check if the users account has been created as active
+                let defaults = UserDefaults.standard
+                let active = defaults.object(forKey:"active") as? Bool ?? false
+                
+                if !active {
+                    
+                    self.showUserProfileView()
+                } else {
+                    
+                    self.retrieveUsersCloseBy()
+                    
+                }
             }
-            
         }
-        
-        showUserProfileView()
-        
-        
-        // CHECK LOCAL DATA FOR ALREADY LOGGED IN AND DETAILS
-        
-//        let prefs = UserDefaults.standard
-//        
-//        let localDataTeamDict = prefs.object(forKey: "localDataTeamDict")
-//        
-//        guard let newTeamDict = localDataTeamDict as? [String:Any]
-//            
-//            else {
-//                showLoginView()
-//                return
-//                
-//        }
-//        
-//        print(localDataTeamDict)
-//        
-//        if newTeamDict["teamCode"] as! String == "" || newTeamDict["teamActive"] as! Bool == false {
-//            showLoginView()
-//            
-//        } else if newTeamDict["teamName"] as! String == "" && newTeamDict["teamImage"] as! String == "" {
-//            
-//            showTeamDetailsView()
-//            
-//        } else {
-//            
-//            retrieveChallenges()
-//        }
+    }
+    
+    func retrieveUsersCloseBy() {
+    
+        let firebaseService = FirebaseService()
+        firebaseService.retrieveUsers() {
+            (results) in
+            
+            if results.count > 0 {
+                self.usersToDisplay = results
+                self.collectionView?.reloadData()
+            }
+        }
 
-        
-        
-        
+    
+    
     }
     
     
@@ -114,25 +106,22 @@ class CloseByCollectionViewController: UICollectionViewController, LoginViewCont
     }
 
     
-    
     // MARK: - Delegate Methods
     
     // LOGINVIEW DELEGATE METHOD
     
     func didLoginSuccessfully() {
         
-
         dismiss(animated: true, completion: nil)
         
-        //handleInitialActivities()
-        
+        handleInitialActivities()
     }
     
     func didEnterUserDetails() {
         
         dismiss(animated: true, completion: nil)
         
-        //handleInitialActivities()
+        handleInitialActivities()
         
     }
 
@@ -153,19 +142,52 @@ class CloseByCollectionViewController: UICollectionViewController, LoginViewCont
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        
+        return usersToDisplay.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CloseByCell
     
-        // Configure the cell
+        cell.userNameLabel.text = "\(usersToDisplay[indexPath.row].firstName)"
+        cell.userAgeLabel.text = "\(usersToDisplay[indexPath.row].age)"
+        
+        //cell.userFotoView.image = faceImages[indexPath.row]
+        
+        switch indexPath.row {
+        case 0:
+            cell.userFotoView.image = UIImage(named: "girl1")
+        case 1:
+            cell.userFotoView.image = UIImage(named: "guy1")
+        case 2:
+            cell.userFotoView.image = UIImage(named: "girl2")
+        case 3:
+            cell.userFotoView.image = UIImage(named: "guy2")
+        case 4:
+            cell.userFotoView.image = UIImage(named: "girl1")
+        case 5:
+            cell.userFotoView.image = UIImage(named: "guy1")
+        case 6:
+            cell.userFotoView.image = UIImage(named: "girl2")
+        case 7:
+            cell.userFotoView.image = UIImage(named: "guy2")
+        default:
+            cell.userFotoView.image = UIImage(named: "girl1")
+
+        }
+        
+        cell.backgroundColor = UIColor.white
+        
+        
+
+        
+        
     
         return cell
     }
@@ -201,4 +223,30 @@ class CloseByCollectionViewController: UICollectionViewController, LoginViewCont
     }
     */
 
+}
+
+extension CloseByCollectionViewController : UICollectionViewDelegateFlowLayout {
+ 
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
 }
